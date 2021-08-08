@@ -35,11 +35,17 @@ export class CanvasComponent implements OnInit {
   }
 
   onSizeSelect(): void {
-    // this.circles = [];
+    this.circles = [];
   }
 
   onCircleClick(circle: ICircle): void {
-    this.circles[circle.id].color = this.currentColor;
+    if(this.circles[circle.id].color === this.currentColor ){
+      this.circles[circle.id].color = "";
+    }else {
+      this.circles[circle.id].color = this.currentColor;
+    }
+
+    
   }
 
   onResetColor(): void {
@@ -87,6 +93,9 @@ export class CanvasComponent implements OnInit {
     })
     const projectsStr = JSON.stringify(this.projectList);
     this.storage.set(this.projectListName, projectsStr);
+
+  console.log( 'project list', this.projectList);
+  
   }
 
   getProjects(): void {

@@ -26,19 +26,19 @@
     <button class="button-fill-all"
             (click)="onSave()">Save</button>
     <input type="text" [(ngModel)]="projectName" />
-    <div class="projects-container">
-      <div *ngFor="let project of projectList"
-           class="project"
-           (click)="selectProject(project)">
-        <p>Project: {{project.name}}</p>
-      </div>
-    </div>
   </div>
   <div class="circles-container container-{{selectedSize}}">
     <app-circle *ngFor="let circle of circles"
                 [color]="circle.color"
                 (click)="onCircleClick(circle)">
     </app-circle>
+  </div>
+  <div class="projects-container">
+    <div *ngFor="let project of projectList"
+         class="project"
+         (click)="selectProject(project)">
+      <p>Project: {{project.name}}</p>
+    </div>
   </div>
 </div>
 
