@@ -25,6 +25,7 @@ export class CanvasComponent implements OnInit {
   selectedSize: number = this.canvasSizes[0];
   currentColor: string = '#000';
   pointer: string = 'all';
+  id!: string;
   
 
   constructor(private storage: LocalStorageService) { }
@@ -87,12 +88,16 @@ export class CanvasComponent implements OnInit {
       return;
     }
     const p = new ProjectsComponent(this.newId(), this.projectName, this.circles);
-    this.projectList.push(p);
+    let indexKey;
+      for(let i= 0; i< this.projectList.length; i++){
+        if(this.projectList[i].id === this.id){
+          this.projectList.splice(i,1);
+        }
+      } 
+    this.projectList.splice(indexKey||this.projectList.length,0,p)
     this.setStorage();  
     this.projectName='';
-    this.resetColors();
-
-
+    this.circles = [];
   }
 
   setStorage() {
@@ -110,7 +115,8 @@ export class CanvasComponent implements OnInit {
   selectProject(project: IProject): void {
     this.circles = project.circles;
     this.projectName = project.name;
-    this.pointer = 'none';   
+    this.pointer = 'none'; 
+    this.id = project.id  
   }
 
   onDelete(i: number): void {
