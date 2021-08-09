@@ -101,3 +101,15 @@
   border-radius: 30px;
   opacity: 0;
 }
+
+@media (max-width: 870px) {
+  .canvas-component {
+    margin:0;
+  }
+}
+
+@media (max-width: 670px) {
+  .controls-panel {
+    flex-flow: column wrap;
+  }
+}
