@@ -23,7 +23,7 @@
             (click)="onResetColor()">Reset</button>
     <button class="button-fill-all"
             (click)="onFillCircles()">Fill all</button>
-    <button class="button-fill-all"
+    <button class="button-save"
             (click)="onSave()">Save</button>
     <input type="text" [(ngModel)]="projectName" />
   </div>
@@ -34,10 +34,11 @@
     </app-circle>
   </div>
   <div class="projects-container">
-    <div *ngFor="let project of projectList"
+    <div *ngFor="let project of projectList; let i = index"
          class="project"
          (click)="selectProject(project)">
       <p>Project: {{project.name}}</p>
+      <button class="button-delete" (click)="onDelete(project,i)">Delete</button>
     </div>
   </div>
 </div>

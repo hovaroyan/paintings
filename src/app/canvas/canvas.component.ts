@@ -9,6 +9,7 @@ import {IProject} from "../interfaces/project.interface";
   templateUrl: './canvas.component.html',
   styleUrls: ['./canvas.component.css']
 })
+
 export class CanvasComponent implements OnInit {
   circles: ICircle[] = [];
   projectName: string = '';
@@ -21,17 +22,16 @@ export class CanvasComponent implements OnInit {
   ];
   selectedSize: number = this.canvasSizes[0];
   currentColor: string = '#000';
+  
 
   constructor(private storage: LocalStorageService) { }
 
   ngOnInit(): void {
     this.getProjects();
-    console.log(this.projectList)
   }
 
   onGenerateCircles(): void {
     this.resetColors()
-    console.log('this.circles: ', this.circles);
   }
 
   onSizeSelect(): void {
@@ -43,10 +43,9 @@ export class CanvasComponent implements OnInit {
       this.circles[circle.id].color = "";
     }else {
       this.circles[circle.id].color = this.currentColor;
+           }         
     }
-
-    
-  }
+       
 
   onResetColor(): void {
     if (!this.isEmpty(this.circles)) {
@@ -82,7 +81,7 @@ export class CanvasComponent implements OnInit {
     return String(Date.now());
   }
 
-  onSave(): void {
+  onSave(): void {  
     if (this.isEmpty(this.circles) || !this.projectName) {
       return;
     }
@@ -90,22 +89,25 @@ export class CanvasComponent implements OnInit {
       id: this.newId(),
       name: this.projectName,
       circles: this.circles,
+
     })
     const projectsStr = JSON.stringify(this.projectList);
-    this.storage.set(this.projectListName, projectsStr);
-
-  console.log( 'project list', this.projectList);
-  
+    this.storage.set(this.projectListName, projectsStr); 
   }
 
   getProjects(): void {
     const projects = this.storage.get(this.projectListName);
     if (projects) {
       this.projectList = JSON.parse(projects);
-    }
+    }  
   }
 
   selectProject(project: IProject): void {
     this.circles = project.circles;
+  }
+
+  onDelete(project: IProject,i: number): void {
+    this.projectList.splice(i,1)
+    this.storage.remove(project.id)   
   }
 }

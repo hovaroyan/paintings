@@ -1,10 +1,15 @@
 .canvas-component {
   display: flex;
-  flex-flow: row wrap;
-  justify-content: flex-start;
-  align-items: flex-start;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
   margin: auto 100px;
   height: auto;
+  background: linear-gradient(6deg, rgba(60,98,217,1) 0%, rgba(1,31,56,1) 100%);
+  border-radius: 5px;
+  padding: 10px;
+
+
 }
 
 .controls-panel {
@@ -23,22 +28,35 @@
   justify-content: flex-start;
   align-items: flex-start;
   width: 380px;
+  padding: 20px;
 }
 
 .projects-container {
   display: flex;
   flex-flow: row wrap;
   justify-content: flex-start;
-  align-items: flex-start;
+  align-items: center;
   min-height: 40px;
 }
 
 .project {
   display: flex;
-  margin-left: 5px;
-  padding: 2px;
-  border: 1px solid #000000;
+  flex-direction: column;
+  flex-wrap: wrap;
+  padding: 5px;
   border-radius: 5px;
+  margin: 0 5px 10px 0;
+  font-weight: bold;
+  align-content: center;
+  background: linear-gradient(189deg, rgba(249,249,249,1) 0%, rgba(113,110,110,1) 100%);
+}
+
+.project p {
+  text-overflow: ellipsis;
+  display: block;
+  width: 100px;
+  overflow: hidden;     
+  white-space: nowrap;
 }
 
 .circles-container.container-100 {
@@ -51,10 +69,6 @@
 
 .container-400 {
   width: 560px;
-}
-
-.button-generate {
-  margin-left: 10px;
 }
 
 .picker-wrapper {
@@ -88,10 +102,47 @@
   opacity: 0;
 }
 
+.button-generate {
+  margin-left: 10px;
+  background-color: #77a809;;
+  border: none;
+  padding: 5px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
 .button-reset {
   margin-left: 10px;
+  background-color: #0061a7;
+  border: none;
+  padding: 5px 20px;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 .button-fill-all {
   margin-left: 10px;
+  background-color: #ffab23;
+  border: none;
+  padding: 5px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.button-save {
+  margin: 0 10px;
+  background-color: #408c99;;
+  border: none;
+  padding: 5px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.button-delete {
+  margin: 0 10px;
+  background-color: #bc3315;
+  border: none;
+  padding: 5px 20px;
+  border-radius: 5px;
+  cursor: pointer;
 }
