@@ -117,9 +117,12 @@ export class CanvasComponent implements OnInit {
   }
 
   onDeleteAll(){
-    this.projectList = [];
-    this.storage.removeAll()
-    this. resetColors();
+    if (!this.isEmpty(this.circles)) {
+      this.projectList = [];
+      this.storage.removeAll()
+      this.resetColors();
+    }
+
   }
 
 }

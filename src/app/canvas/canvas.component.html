@@ -16,9 +16,9 @@
       <input class="picker" type="color"
              [(ngModel)]="currentColor" />
     </div>
-    <app-button text='Reset' backgroundColor="#0061a7" (click)="onResetColor()"></app-button>
-    <app-button text='Fill All' backgroundColor="#ffab23" (click)="onFillCircles()"></app-button>
-    <app-button text='Delete All' backgroundColor="#408c99" (click)="onDeleteAll()"></app-button>
+    <app-button text='Reset' backgroundColor="#0061a7" [disabled]="!circles.length" (click)="onResetColor()"></app-button>
+    <app-button text='Fill All' backgroundColor="#ffab23" [disabled]="!circles.length" (click)="onFillCircles()"></app-button>
+    <app-button text='Delete All' backgroundColor="#408c99" [disabled]="!projectList.length" (click)="onDeleteAll()"></app-button>
     <app-button text='Save' backgroundColor="#408c99" [disabled]="!projectName" (click)="onSave()"></app-button>
     <input class="input" type="text" placeholder="ENTER Project Name" [(ngModel)]="projectName" />
   </div>
