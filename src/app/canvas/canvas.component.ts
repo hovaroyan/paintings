@@ -112,9 +112,9 @@ export class CanvasComponent implements OnInit {
   }
 
   onDeleteAll(){
-    this.projectList=this.projectList.splice(0,this.projectList.length-1)
+    this.projectList = [];
     this.storage.removeAll()
-
+    console.log(this.projectList);
   }
 
 }
