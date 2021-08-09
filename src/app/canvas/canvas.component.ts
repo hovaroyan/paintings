@@ -88,8 +88,11 @@ export class CanvasComponent implements OnInit {
     const p = new ProjectsComponent(this.newId(), this.projectName, this.circles);
     this.projectList.push(p);
     this.setStorage();
+    console.log(this.projectName);
     this.projectName='';
     this.resetColors();
+
+
   }
 
   setStorage() {
