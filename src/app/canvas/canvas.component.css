@@ -102,6 +102,18 @@
   opacity: 0;
 }
 
+.input {
+  border: none;
+  border-radius: 5px;
+  padding: 3px 5px;
+  font-weight:600;
+  color: #010249;
+  font-family:Arial, Helvetica, sans-serif
+}
+.input:focus {
+ outline: none;
+}
+
 @media (max-width: 870px) {
   .canvas-component {
     margin:0;

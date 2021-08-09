@@ -4,6 +4,14 @@
     border-radius: 5px;
     cursor: pointer;
     margin: 0 10px;
+    font-weight:600;
+    color: #010249;
+    font-family:Arial, Helvetica, sans-serif
+}
+
+.button:disabled {
+  opacity: 0.4;
+  color: white;
 }
 
 @media (max-width: 670px) {
