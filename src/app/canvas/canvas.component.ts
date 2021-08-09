@@ -34,7 +34,8 @@ export class CanvasComponent implements OnInit {
   }
 
   onGenerateCircles(): void {
-    this.resetColors()
+    this.resetColors();
+    this.projectName = '';
   }
 
   onSizeSelect(): void {
@@ -87,8 +88,7 @@ export class CanvasComponent implements OnInit {
     }
     const p = new ProjectsComponent(this.newId(), this.projectName, this.circles);
     this.projectList.push(p);
-    this.setStorage();
-    console.log(this.projectName);
+    this.setStorage();  
     this.projectName='';
     this.resetColors();
 
@@ -121,13 +121,10 @@ export class CanvasComponent implements OnInit {
     }
   }
 
-  onDeleteAll(){
-    if (!this.isEmpty(this.circles)) {
+  onDeleteAll(){  
       this.projectList = [];
       this.storage.removeAll()
-      this.resetColors();
-    }
-
+      this.circles = [];
   }
 
 }
