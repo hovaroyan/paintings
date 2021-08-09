@@ -25,7 +25,7 @@
   <div class="circles-container container-{{selectedSize}}">
     <app-circle *ngFor="let circle of circles"
                 [color]="circle.color"
-                (click)="onCircleClick(circle)">
+                (click)="onCircleClick(circle)" [style.pointer-events]='pointer'>
     </app-circle>
   </div>
   <div class="projects-container">

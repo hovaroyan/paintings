@@ -24,6 +24,7 @@ export class CanvasComponent implements OnInit {
   ];
   selectedSize: number = this.canvasSizes[0];
   currentColor: string = '#000';
+  pointer: string = 'all';
   
 
   constructor(private storage: LocalStorageService) { }
@@ -105,7 +106,8 @@ export class CanvasComponent implements OnInit {
 
   selectProject(project: IProject): void {
     this.circles = project.circles;
-    this.projectName = project.name    
+    this.projectName = project.name;
+    this.pointer = 'none';   
   }
 
   onDelete(i: number): void {
