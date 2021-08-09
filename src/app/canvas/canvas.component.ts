@@ -91,6 +91,10 @@ export class CanvasComponent implements OnInit {
       circles: this.circles,
 
     })
+    this.setStorage();
+  }
+
+  setStorage() {
     const projectsStr = JSON.stringify(this.projectList);
     this.storage.set(this.projectListName, projectsStr); 
   }
@@ -106,8 +110,9 @@ export class CanvasComponent implements OnInit {
     this.circles = project.circles;
   }
 
-  onDelete(project: IProject,i: number): void {
+  onDelete(i: number): void {
     this.projectList.splice(i,1)
-    this.storage.remove(project.id)   
+    this.setStorage() 
   }
+
 }
