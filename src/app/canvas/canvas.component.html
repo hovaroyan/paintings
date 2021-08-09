@@ -9,23 +9,17 @@
         {{size}}
       </option>
     </select>
-    <button class="button-generate"
-            (click)="onGenerateCircles()">
-      Generate
-    </button>
+    <app-button text='Generate' backgroundColor="#77a809" (click)="onGenerateCircles()"></app-button>
     <div class="picker-wrapper">
       <div class="picker-inner"
            [style.background-color]="currentColor"></div>
       <input class="picker" type="color"
              [(ngModel)]="currentColor" />
     </div>
-    <button class="button-reset"
-            (click)="onResetColor()">Reset</button>
-    <button class="button-fill-all"
-            (click)="onFillCircles()">Fill all</button>
-    <button class="button-save"
-            (click)="onSave()">Save</button>
-    <input type="text" [(ngModel)]="projectName" />
+            <app-button text='Reset' backgroundColor="#0061a7" (click)="onResetColor()"></app-button>
+            <app-button text='Fill all' backgroundColor="#ffab23" (click)="onFillCircles()"></app-button>
+            <app-button text='Save' backgroundColor="#408c99" (click)="onSave()"></app-button>
+    <input type="text" placeholder="ENTER Project Name" [(ngModel)]="projectName" />
   </div>
   <div class="circles-container container-{{selectedSize}}">
     <app-circle *ngFor="let circle of circles"
@@ -38,7 +32,7 @@
          class="project"
          (click)="selectProject(project)">
       <p>Project: {{project.name}}</p>
-      <button class="button-delete" (click)="onDelete(i)">Delete</button>
+      <app-button text='Delete' backgroundColor="#bc3315" (click)="onDelete(i)"></app-button>
     </div>
   </div>
 </div>
