@@ -84,10 +84,11 @@ export class CanvasComponent implements OnInit {
     if (this.isEmpty(this.circles) || !this.projectName) {
       return;
     }
-    const p = new ProjectsComponent(this.newId(), this.projectName, this.circles)
-    this.projectList.push(p)
+    const p = new ProjectsComponent(this.newId(), this.projectName, this.circles);
+    this.projectList.push(p);
     this.setStorage();
-    this.projectName=''
+    this.projectName='';
+    this.resetColors();
   }
 
   setStorage() {
@@ -104,6 +105,7 @@ export class CanvasComponent implements OnInit {
 
   selectProject(project: IProject): void {
     this.circles = project.circles;
+    this.projectName = project.name    
   }
 
   onDelete(i: number): void {
