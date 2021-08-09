@@ -3,6 +3,8 @@ import {ICircle} from "../interfaces/circle.interface";
 import {ECircleCount} from "../enums/circle-count.enum";
 import {LocalStorageService} from "../services/storage.service";
 import {IProject} from "../interfaces/project.interface";
+import { ProjectsComponent } from '../projects/projects.component';
+import { CirclesComponent } from '../circles/circles.component';
 
 @Component({
   selector: 'app-canvas',
@@ -56,11 +58,8 @@ export class CanvasComponent implements OnInit {
   resetColors(): void {
     this.circles = [];
     for (let i = 0; i < this.selectedSize; i++) {
-      this.circles.push({
-        id: i,
-        uid: this.newId(),
-        color: '',
-      });
+      const c = new CirclesComponent(i,this.newId(),'')
+      this.circles.push(c);
     }
   }
 
@@ -85,13 +84,10 @@ export class CanvasComponent implements OnInit {
     if (this.isEmpty(this.circles) || !this.projectName) {
       return;
     }
-    this.projectList.push({
-      id: this.newId(),
-      name: this.projectName,
-      circles: this.circles,
-
-    })
+    const p = new ProjectsComponent(this.newId(), this.projectName, this.circles)
+    this.projectList.push(p)
     this.setStorage();
+    this.projectName=''
   }
 
   setStorage() {
@@ -113,6 +109,12 @@ export class CanvasComponent implements OnInit {
   onDelete(i: number): void {
     this.projectList.splice(i,1)
     this.setStorage() 
+  }
+
+  onDeleteAll(){
+    this.projectList=this.projectList.splice(0,this.projectList.length-1)
+    this.storage.removeAll()
+
   }
 
 }

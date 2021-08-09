@@ -6,13 +6,17 @@ import { CanvasComponent } from './canvas/canvas.component';
 import { CircleComponent } from './circle/circle.component';
 import {FormsModule} from "@angular/forms";
 import { ButtonComponent } from './button/button.component';
+import { ProjectsComponent } from './projects/projects.component';
+import { CirclesComponent } from './circles/circles.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CanvasComponent,
     CircleComponent,
-    ButtonComponent
+    ButtonComponent,
+    ProjectsComponent,
+    CirclesComponent
   ],
   imports: [
     BrowserModule,
