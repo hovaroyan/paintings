@@ -108,13 +108,16 @@ export class CanvasComponent implements OnInit {
 
   onDelete(i: number): void {
     this.projectList.splice(i,1)
-    this.setStorage() 
+    this.setStorage();
+    if(this.projectList.length === 0){
+      this.resetColors();
+    }
   }
 
   onDeleteAll(){
     this.projectList = [];
     this.storage.removeAll()
-    console.log(this.projectList);
+    this. resetColors();
   }
 
 }
