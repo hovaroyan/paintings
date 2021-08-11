@@ -29,7 +29,7 @@ name!:string;
 
   getUserName() {
     const currentUser = this.getUserInfo();
-    currentUser.map((info:{ email: string; name: string })=> {      
+    currentUser?.map((info:{ email: string; name: string })=> {      
         if(this.email === info.email){
           this.name = info.name
         }

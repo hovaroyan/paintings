@@ -13,7 +13,7 @@ export class RegisterComponent implements OnInit {
   counter = 1;
   index: number = 0;
   usersList: IUsers[] = [];
-  usersListName = 'users list'
+  usersListName = 'usersList'
 
   items= this.fb.group({
     name: this.fb.control('',[Validators.required, Validators.minLength(5)]),

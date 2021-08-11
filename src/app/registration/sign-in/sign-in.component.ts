@@ -38,17 +38,20 @@ getUserInfo() {
 
 
 handleSignIn() {
+  debugger;
   const signInUser = this.getUserInfo();
-
-  signInUser?.map((info: { email: string; password: string })=>{
-  if(info.email === this.items.value.email && info.password === this.items.value.password && this.items.valid){
-    this.router.navigate(['/painting'])
-    this.userInfo.userEmail = info.email;
-  } else {
-    this.checkInputs = true;
-  }
-});
-  
+if(!signInUser){
+  this.checkInputs = true;
+} 
+  signInUser.map((info: { email: string; password: string })=>{
+    if(info.email === this.items.controls.email.value && info.password === this.items.controls.password.value && this.items.valid){
+      this.userInfo.userEmail = info.email;
+      this.router.navigate(['/painting'])
+    } else {
+      this.checkInputs = true;
+    }
+  });
 }
+
 }
 
