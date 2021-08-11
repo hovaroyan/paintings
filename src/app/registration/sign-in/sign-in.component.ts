@@ -12,8 +12,6 @@ import { UserInfo } from '../../services/userInfo.service';
 })
 export class SignInComponent  {
 
-  counter = 1;
-  index: number = 0;
   usersList: IUsers[] = [];
   usersListName = 'usersList';
   checkInputs: boolean = false;
@@ -27,7 +25,10 @@ export class SignInComponent  {
   
 
   constructor(private fb: FormBuilder, private storage: LocalStorageService, private router: Router, public userInfo: UserInfo) { }
+  ngOnInit(): void {
 
+   }
+   
 getUserInfo() {
   const userStr = this.storage.get(this.usersListName)
   if(userStr){
@@ -38,14 +39,17 @@ getUserInfo() {
 
 
 handleSignIn() {
-  const signInUser = this.getUserInfo();
+  const signInUser = this.getUserInfo(); 
 if(!signInUser){
   this.checkInputs = true;
 } 
-  signInUser.map((info: { email: string; password: string })=>{
+  signInUser.map((info: { email: string; password: string , name: string})=>{
     if(info.email === this.items.controls.email.value && info.password === this.items.controls.password.value && this.items.valid){
       this.userInfo.userEmail = info.email;
-      this.router.navigate(['/painting'])
+      this.router.navigate(['/painting']);
+      this.storage.set('loggedInUser',info.email);
+      this.storage.set('userName',info.name);
+
     } else {
       this.checkInputs = true;
     }

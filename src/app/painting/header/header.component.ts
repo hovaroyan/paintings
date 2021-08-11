@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { UserInfo } from '../../services/userInfo.service';
 import { LocalStorageService } from '../../services/storage.service';
 
 @Component({
@@ -8,10 +7,18 @@ import { LocalStorageService } from '../../services/storage.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-usersListName = 'usersList';
-email: string = this.userInfo.userEmail;
-  constructor(private storage:LocalStorageService ,private userInfo: UserInfo) { }
+
+  constructor(private storage:LocalStorageService) { }
+  userName: string | null = ''
 
   ngOnInit(): void {    
+    this.userName = this.storage.get('userName');
+    
+  }
+  signOut(){
+     this.storage.set('loggedInUser', JSON.stringify(undefined));
+     this.storage.set('userName', JSON.stringify(undefined));
+
+    
   }
 }

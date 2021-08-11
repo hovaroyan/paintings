@@ -10,8 +10,6 @@ import { LocalStorageService } from '../../services/storage.service';
 })
 export class RegisterComponent implements OnInit {
 
-  counter = 1;
-  index: number = 0;
   usersList: IUsers[] = [];
   usersListName = 'usersList'
 
