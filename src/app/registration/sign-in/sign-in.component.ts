@@ -3,6 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { IUsers } from 'src/app/painting/interfaces/users.interface';
 import { LocalStorageService } from '../../services/storage.service';
+import { UserInfo } from '../../services/userInfo.service';
 
 @Component({
   selector: 'app-sign-in',
@@ -18,13 +19,14 @@ export class SignInComponent  {
   checkInputs: boolean = false;
 
 
+
   items= this.fb.group({
     email: this.fb.control('',[Validators.required]),
     password: this.fb.control('',[Validators.required]),
   });
   
 
-  constructor(private fb: FormBuilder, private storage: LocalStorageService, private router: Router) { }
+  constructor(private fb: FormBuilder, private storage: LocalStorageService, private router: Router, public userInfo: UserInfo) { }
 
 getUserInfo() {
   const userStr = this.storage.get(this.usersListName)
@@ -43,6 +45,8 @@ console.log(this.items.valid);
 signInUser.map((info: { email: string; password: string })=>{
   if(info.email === this.items.value.email && info.password === this.items.value.password){
    this.router.navigate(['/painting'])
+   this.userInfo.userEmail = info.email;
+   
   } else {
     this.checkInputs = true;
   }
