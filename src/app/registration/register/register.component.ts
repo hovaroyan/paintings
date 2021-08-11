@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { IUsers } from 'src/app/painting/interfaces/users.interface';
 import { LocalStorageService } from '../../services/storage.service';
@@ -8,7 +8,7 @@ import { LocalStorageService } from '../../services/storage.service';
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
-export class RegisterComponent {
+export class RegisterComponent implements OnInit {
 
   counter = 1;
   index: number = 0;
@@ -28,23 +28,31 @@ export class RegisterComponent {
 
   constructor(private fb: FormBuilder, private storage: LocalStorageService) { }
 
+  ngOnInit(): void {
+   this.getUsers();
+   
+  }
 
 confirmPasswordCheck() {
   const password = this.items.controls[this.index]?.get('password')?.value;
   const confirmPassword = this.items.controls[this.index]?.get('confirmPassword')?.value;
   return confirmPassword === password;
 }
+getUsers(): void {
+  const users = this.storage.get(this.usersListName);
+  if (users) {
+    this.usersList = JSON.parse(users);
+  }  
+}
 
 handleSignUp() {
-console.log(this.items);
+console.log(this.usersList);
+
 if(this.items.valid) {
   this.usersList.push(this.items.value);
   const usersListStr = JSON.stringify(this.usersList)
   this.storage.set(this.usersListName, usersListStr)
 } 
-
-console.log(this.usersList);
-console.log(this.items.valid);
-
 }
+
 }
