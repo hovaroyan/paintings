@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { IUsers } from 'src/app/painting/interfaces/users.interface';
 
 @Component({
   selector: 'app-register',
@@ -10,6 +11,7 @@ export class RegisterComponent {
 
   counter = 1;
   index: number = 0;
+  usersList: IUsers[] = [];
 
   items= this.fb.group({
     name: this.fb.control('',[Validators.required, Validators.minLength(5)]),
@@ -31,8 +33,8 @@ confirmPasswordCheck() {
   return confirmPassword === password;
 }
 
-handleSubmit() {
-  console.log('hi');
-  
+handleSignUp() {
+console.log('sign in');
+ 
 }
 }

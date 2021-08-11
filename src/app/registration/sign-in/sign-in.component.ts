@@ -21,8 +21,9 @@ export class SignInComponent  {
 
 
 
-handleSubmit() {
-  console.log(this.items.value);
+handleSignIn() {
+console.log('sign in');
+
   
 }
 }
