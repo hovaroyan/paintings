@@ -5,7 +5,7 @@
           <app-validation  [control]="$any(items).controls['password']" inputType="password" inputTitle="password"></app-validation>
        </form>
        <div class="error-container" *ngIf="checkInputs">
-         email or password do NOT exist
+         Email or Password do NOT exist either REGISTER or input the right values
       </div>
      </div>
      <app-button  padding="10px 30px"  backgroundColor="#4CAF50" text='Sign In' (click)="handleSignIn()"></app-button>

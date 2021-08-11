@@ -15,7 +15,7 @@ export class SignInComponent  {
   counter = 1;
   index: number = 0;
   usersList: IUsers[] = [];
-  usersListName = 'users list';
+  usersListName = 'usersList';
   checkInputs: boolean = false;
 
 
@@ -34,24 +34,20 @@ getUserInfo() {
     const user = JSON.parse(userStr);
     return user;
   }
-  
 }
 
 
 handleSignIn() {
-const signInUser = this.getUserInfo();
-console.log(this.items.valid);
+  const signInUser = this.getUserInfo();
 
-signInUser.map((info: { email: string; password: string })=>{
-  if(info.email === this.items.value.email && info.password === this.items.value.password){
-   this.router.navigate(['/painting'])
-   this.userInfo.userEmail = info.email;
-   
+  signInUser?.map((info: { email: string; password: string })=>{
+  if(info.email === this.items.value.email && info.password === this.items.value.password && this.items.valid){
+    this.router.navigate(['/painting'])
+    this.userInfo.userEmail = info.email;
   } else {
     this.checkInputs = true;
   }
 });
-
   
 }
 }
