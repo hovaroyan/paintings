@@ -1,40 +1,44 @@
-<div class="canvas-component">
-  <div class="controls-panel">
-    <select class="size-selector"
-            [(ngModel)]="selectedSize"
-            (change)="onSizeSelect()"
-    >
-      <option *ngFor="let size of canvasSizes"
-              [value]="size">
-        {{size}}
-      </option>
-    </select>
-    <app-button text='Generate' backgroundColor="#4CAF50" (click)="onGenerateCircles()"></app-button>
-    <div class="picker-wrapper">
-      <div class="picker-inner"
-           [style.background-color]="currentColor"></div>
-      <input class="picker" type="color"
-             [(ngModel)]="currentColor" />
+<app-header></app-header>
+<div class="container">
+  <div class="canvas-component">
+    <div class="controls-panel">
+      <select class="size-selector"
+              [(ngModel)]="selectedSize"
+              (change)="onSizeSelect()"
+      >
+        <option *ngFor="let size of canvasSizes"
+                [value]="size">
+          {{size}}
+        </option>
+      </select>
+      <app-button text='Generate' backgroundColor="#4CAF50" (click)="onGenerateCircles()"></app-button>
+      <div class="picker-wrapper">
+        <div class="picker-inner"
+             [style.background-color]="currentColor"></div>
+        <input class="picker" type="color"
+               [(ngModel)]="currentColor" />
+      </div>
+      <app-button text='Reset' backgroundColor="#c62d1f" [disabled]="!circles.length || !resetDisable" (click)="onResetColor()"></app-button>
+      <app-button text='Fill All' backgroundColor="#008CBA" [disabled]="!circles.length || fillDisable" (click)="onFillCircles()"></app-button>
+      <app-button text='Delete All' backgroundColor="#c62d1f" [disabled]="!projectList.length" (click)="onDeleteAll()"></app-button>
+      <app-button text='Save' backgroundColor="#008CBA" [disabled]="!projectName || !circles.length" (click)="onSave()"></app-button>
+      <input class="input" type="text" placeholder="ENTER Project Name" [style.pointer-events]='pointer' [(ngModel)]="projectName" />
     </div>
-    <app-button text='Reset' backgroundColor="#f44336" [disabled]="!circles.length || !resetDisable" (click)="onResetColor()"></app-button>
-    <app-button text='Fill All' backgroundColor="#008CBA" [disabled]="!circles.length || fillDisable" (click)="onFillCircles()"></app-button>
-    <app-button text='Delete All' backgroundColor="#f44336" [disabled]="!projectList.length" (click)="onDeleteAll()"></app-button>
-    <app-button text='Save' backgroundColor="#008CBA" [disabled]="!projectName || !circles.length" (click)="onSave()"></app-button>
-    <input class="input" type="text" placeholder="ENTER Project Name" [style.pointer-events]='pointer' [(ngModel)]="projectName" />
-  </div>
-  <div class="circles-container container-{{selectedSize}}">
-    <app-circle *ngFor="let circle of circles"
-                [color]="circle.color"
-                (click)="onCircleClick(circle)">
-    </app-circle>
-  </div>
-  <div class="projects-container">
-    <div *ngFor="let project of projectList; let i = index"
-         class="project"
-         (click)="selectProject(project)">
-      <p>Project: {{project.name}}</p>
-      <app-button text='Delete' backgroundColor="#f44336" (click)="onDelete(i)"></app-button>
+    <div class="circles-container container-{{selectedSize}}">
+      <app-circle *ngFor="let circle of circles"
+                  [color]="circle.color"
+                  (click)="onCircleClick(circle)">
+      </app-circle>
+    </div>
+    <div class="projects-container">
+      <div *ngFor="let project of projectList; let i = index"
+           class="project"
+           (click)="selectProject(project)">
+        <p>Project: {{project.name}}</p>
+        <app-button text='Delete' backgroundColor="#c62d1f" (click)="onDelete(i)"></app-button>
+      </div>
     </div>
   </div>
+  
 </div>
 

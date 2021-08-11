@@ -1,0 +1,7 @@
+.header-container{
+    display: flex;
+    background: linear-gradient(to top, #BBD2C5, #536976,#292E49);
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 30px;
+}

@@ -1,3 +1,12 @@
+.container{
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+ padding: 20px 20px;
+}
+
 .canvas-component {
   display: flex;
   flex-flow: column;
@@ -5,11 +14,9 @@
   align-items: center;
   margin: auto 100px;
   height: auto;
-  background:  linear-gradient(to right top, #051937, #004d7a, #008793, #00bf72, #a8eb12);
+  background: linear-gradient(to right, #BBD2C5, #536976,#292E49);
   border-radius: 5px;
   padding: 10px;
-
-
 }
 
 .controls-panel {
@@ -48,7 +55,7 @@
   margin: 0 5px 10px 0;
   font-weight: bold;
   align-content: center;
-  background: linear-gradient(189deg, rgba(249,249,249,1) 0%, rgba(113,110,110,1) 100%);
+  background: linear-gradient(to left, #BBD2C5, #536976,#292E49);
 }
 
 .project p {
@@ -121,6 +128,10 @@
 }
 
 @media (max-width: 670px) {
+  .canvas-component {
+    margin:0;
+    width: 75%;
+  }
   .controls-panel {
     flex-flow: column wrap;
   }

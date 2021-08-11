@@ -1,7 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
 body {
     background-color: #eaebee;
+    margin: 0;
 }
+
 .error-container {
     padding: 10px;
     color: #D8000C;
@@ -22,13 +24,23 @@ body {
     align-items: center;
     width: 75%;
 }
+
 .form {
     border-radius: 5px;
     padding: 20px;
     width: 50%;
 }
+
 .button-container{
     width: 100%;
     display: flex;
     justify-content: space-around;
+}
+
+a {   
+    color: blue;   
+}
+
+a:active {
+    color: black;
 }
