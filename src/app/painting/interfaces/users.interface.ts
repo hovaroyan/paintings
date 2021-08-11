@@ -7,5 +7,4 @@ export interface IUsers {
     email: string;
     password: string;
     confirmPassword: string;
-    projects: IProject[];
   }

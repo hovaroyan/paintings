@@ -5,6 +5,8 @@ import {LocalStorageService} from "../../services/storage.service";
 import {IProject} from "../interfaces/project.interface";
 import { ProjectsComponent } from '../projects/projects.component';
 import { CirclesComponent } from '../circles/circles.component';
+import { IUsers } from '../interfaces/users.interface';
+import { UserInfo } from '../../services/userInfo.service';
 
 @Component({
   selector: 'app-canvas',
@@ -29,9 +31,10 @@ export class CanvasComponent implements OnInit {
   canvasPattern: number = this.canvasSizes[0]; 
   resetDisable: boolean = false;
   fillDisable: boolean = false;
-  
+  email = this.userInfo.userEmail;
+  userProjects:IProject[] = [];
 
-  constructor(private storage: LocalStorageService) { }
+  constructor(private storage: LocalStorageService, private userInfo:UserInfo) { }
 
   ngOnInit(): void {
     this.getProjects();
@@ -89,22 +92,7 @@ export class CanvasComponent implements OnInit {
     return String(Date.now());
   }
 
-  onSave(): void {  
-    if (this.isEmpty(this.circles) || !this.projectName) {
-      return;
-    }
-    const p = new ProjectsComponent(this.newId(), this.projectName, this.circles);
-    let indexKey;
-      for(let i= 0; i< this.projectList.length; i++){
-        if(this.projectList[i].id === this.id){
-          this.projectList.splice(i,1);
-        }
-      } 
-    this.projectList.splice(indexKey||this.projectList.length,0,p)
-    this.setStorage();  
-    this.projectName='';
-    this.circles = [];
-  }
+ 
 
   setStorage() {
     const projectsStr = JSON.stringify(this.projectList);
@@ -116,6 +104,27 @@ export class CanvasComponent implements OnInit {
     if (projects) {
       this.projectList = JSON.parse(projects);
     }  
+    this.projectList.map(project=>{
+      if(this.email === project.user){
+        this.userProjects.push(project)
+      }
+    })
+  }
+  onSave(): void {  
+    if (this.isEmpty(this.circles) || !this.projectName) {
+      return;
+    }
+    const p = new ProjectsComponent(this.email,this.newId(), this.projectName, this.circles);
+    let indexKey;
+      for(let i= 0; i< this.projectList.length; i++){
+        if(this.projectList[i].id === this.id){
+          this.projectList.splice(i,1);
+        }
+      } 
+    this.projectList.splice(indexKey||this.projectList.length,0,p)
+    this.setStorage();  
+    this.projectName='';
+    this.circles = [];
   }
 
   selectProject(project: IProject): void {

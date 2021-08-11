@@ -8,14 +8,16 @@ import { ICircle } from '../interfaces/circle.interface';
   styleUrls: ['./projects.component.css']
 })
 export class ProjectsComponent implements IProject {
+  user!: string;
   id!: string;
   name!: string;
   circles!: ICircle[];
 
-  constructor(@Inject(String) id:string,@Inject(String) name:string,@Inject(String) circles: ICircle[] ) { 
-this.id=id;
-this.name=name;
-this.circles = circles
+  constructor(@Inject(String) user:string ,@Inject(String) id:string,@Inject(String) name:string,@Inject(String) circles: ICircle[] ) { 
+    this.user = user;
+    this.id=id;
+    this.name=name;
+    this.circles = circles
   }
 
   ngOnInit(): void {

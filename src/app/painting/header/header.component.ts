@@ -13,11 +13,7 @@ email: string = this.userInfo.userEmail;
 name!:string;
   constructor(private storage:LocalStorageService ,private userInfo: UserInfo) { }
 
-  ngOnInit(): void {
-    console.log(this.getUserInfo());
-    console.log(this.getUserName());
-    
-    
+  ngOnInit(): void {    
   }
 
   getUserInfo() {
