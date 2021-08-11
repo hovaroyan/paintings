@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { IUsers } from 'src/app/painting/interfaces/users.interface';
+import { LocalStorageService } from '../../services/storage.service';
 
 @Component({
   selector: 'app-register',
@@ -12,6 +13,7 @@ export class RegisterComponent {
   counter = 1;
   index: number = 0;
   usersList: IUsers[] = [];
+  usersListName = 'users list'
 
   items= this.fb.group({
     name: this.fb.control('',[Validators.required, Validators.minLength(5)]),
@@ -24,7 +26,7 @@ export class RegisterComponent {
   });
   
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private storage: LocalStorageService) { }
 
 
 confirmPasswordCheck() {
@@ -34,7 +36,15 @@ confirmPasswordCheck() {
 }
 
 handleSignUp() {
-console.log('sign in');
- 
+console.log(this.items);
+if(this.items.valid) {
+  this.usersList.push(this.items.value);
+  const usersListStr = JSON.stringify(this.usersList)
+  this.storage.set(this.usersListName, usersListStr)
+} 
+
+console.log(this.usersList);
+console.log(this.items.valid);
+
 }
 }

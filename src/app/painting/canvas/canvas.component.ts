@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ICircle} from "../interfaces/circle.interface";
 import {ECircleCount} from "../enums/circle-count.enum";
-import {LocalStorageService} from "../services/storage.service";
+import {LocalStorageService} from "../../services/storage.service";
 import {IProject} from "../interfaces/project.interface";
 import { ProjectsComponent } from '../projects/projects.component';
 import { CirclesComponent } from '../circles/circles.component';
