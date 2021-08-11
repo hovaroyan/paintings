@@ -30,13 +30,21 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {
    this.getUsers();
+   console.log(this.confirmPasswordCheck());
+   
    
   }
 
 confirmPasswordCheck() {
-  const password = this.items.controls[this.index]?.get('password')?.value;
-  const confirmPassword = this.items.controls[this.index]?.get('confirmPassword')?.value;
-  return confirmPassword === password;
+
+  const password = this.items.controls.password.value;
+  const confirmPassword = this.items.controls.confirmPassword.value;  
+  if(password && confirmPassword){
+    return confirmPassword === password;
+  } else {
+    return false;
+  }
+
 }
 getUsers(): void {
   const users = this.storage.get(this.usersListName);
