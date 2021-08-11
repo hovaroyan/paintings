@@ -5,7 +5,7 @@
   align-items: center;
   margin: auto 100px;
   height: auto;
-  background: linear-gradient(6deg, rgba(60,98,217,1) 0%, rgba(1,31,56,1) 100%);
+  background:  linear-gradient(to right top, #051937, #004d7a, #008793, #00bf72, #a8eb12);
   border-radius: 5px;
   padding: 10px;
 

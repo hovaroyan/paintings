@@ -2,3 +2,33 @@
 body {
     background-color: #eaebee;
 }
+.error-container {
+    padding: 10px;
+    color: #D8000C;
+    text-align: center;
+    font-weight: bold;
+} 
+
+.main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.forms-container {
+    display: flex;
+    flex-direction: column;
+    padding: 20px 40px;
+    align-items: center;
+    width: 75%;
+}
+.form {
+    border-radius: 5px;
+    padding: 20px;
+    width: 50%;
+}
+.button-container{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}

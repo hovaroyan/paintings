@@ -98,7 +98,15 @@
             ],
             "scripts": []
           }
-        }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy",
+          "options": {
+            "baseHref": "https://hovaroyan.github.io/paintings/",
+            "name": "paintings",
+            "email": "hovaroyan@gmail.com"
+            }
+          }
       }
     }
   },

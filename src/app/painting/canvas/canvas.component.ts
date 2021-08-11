@@ -26,6 +26,9 @@ export class CanvasComponent implements OnInit {
   currentColor: string = '#000';
   pointer: string = 'all';
   id!: string;
+  canvasPattern: number = this.canvasSizes[0]; 
+  resetDisable: boolean = false;
+  fillDisable: boolean = false;
   
 
   constructor(private storage: LocalStorageService) { }
@@ -48,7 +51,8 @@ export class CanvasComponent implements OnInit {
       this.circles[circle.id].color = "";
     }else {
       this.circles[circle.id].color = this.currentColor;
-           }         
+           }  
+    this.resetDisable = true;       
     }
        
 
@@ -56,6 +60,7 @@ export class CanvasComponent implements OnInit {
     if (!this.isEmpty(this.circles)) {
       this.resetColors();
     }
+    this.resetDisable = false;
   }
 
   resetColors(): void {
@@ -73,6 +78,7 @@ export class CanvasComponent implements OnInit {
     this.circles.forEach((item) => {
       item.color = this.currentColor;
     })
+    this.fillDisable=true
   }
 
   isEmpty(arr: ICircle[]): boolean {
@@ -113,10 +119,19 @@ export class CanvasComponent implements OnInit {
   }
 
   selectProject(project: IProject): void {
+    if(project.circles.length === 100){
+      this.selectedSize = this.canvasSizes[0];
+    }
+    else if(project.circles.length === 225){
+      this.selectedSize = this.canvasSizes[1];
+    }
+    else{
+      this.selectedSize = this.canvasSizes[2];
+    }
     this.circles = project.circles;
     this.projectName = project.name;
     this.pointer = 'none'; 
-    this.id = project.id  
+    this.id = project.id; 
   }
 
   onDelete(i: number): void {

@@ -1,0 +1,17 @@
+<div class="main">
+    <div class="forms-container">
+       <form class="form" [formGroup]="$any(items)" >       
+          <app-validation [control]="$any(items).controls['name']" inputType="text" inputTitle="name"></app-validation >
+          <app-validation [control]="$any(items).controls['lastName']" inputType="text" inputTitle="last name"></app-validation >
+          <app-validation  [control]="$any(items).controls['phoneNumber']" inputType="text" inputTitle="phone number"></app-validation >
+          <app-validation  [control]="$any(items).controls['email']" inputType="email" inputTitle="email"></app-validation>
+          <app-validation  [control]="$any(items).controls['password']" inputType="password" inputTitle="password"></app-validation >
+          <app-validation  [control]="$any(items).controls['confirmPassword']" inputType="password" inputTitle="confirm password"></app-validation >
+          <div class="error-container" *ngIf="$any(items).controls['confirmPassword'].value && !confirmPasswordCheck() ">
+             It does not match the password
+          </div>
+       </form>
+     </div>
+     <app-button routerLink="" padding="10px 30px" backgroundColor="#008CBA"  text='Submit' (click)="handleSubmit()"></app-button>
+ 
+ </div>

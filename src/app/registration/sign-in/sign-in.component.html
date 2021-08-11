@@ -1,0 +1,10 @@
+<div class="main">
+    <div class="forms-container">
+       <form class="form" [formGroup]="$any(items)" >       
+          <app-validation  [control]="$any(items).controls['email']" inputType="email" inputTitle="email"></app-validation >
+          <app-validation  [control]="$any(items).controls['password']" inputType="password" inputTitle="password"></app-validation>
+       </form>
+     </div>
+     <app-button routerLink="/painting" padding="10px 30px"  backgroundColor="#4CAF50" text='Sign In' (click)="handleSubmit()"></app-button>
+ 
+ </div>

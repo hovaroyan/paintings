@@ -9,17 +9,17 @@
         {{size}}
       </option>
     </select>
-    <app-button text='Generate' backgroundColor="#77a809" (click)="onGenerateCircles()"></app-button>
+    <app-button text='Generate' backgroundColor="#4CAF50" (click)="onGenerateCircles()"></app-button>
     <div class="picker-wrapper">
       <div class="picker-inner"
            [style.background-color]="currentColor"></div>
       <input class="picker" type="color"
              [(ngModel)]="currentColor" />
     </div>
-    <app-button text='Reset' backgroundColor="#0061a7" [disabled]="!circles.length" (click)="onResetColor()"></app-button>
-    <app-button text='Fill All' backgroundColor="#ffab23" [disabled]="!circles.length" (click)="onFillCircles()"></app-button>
-    <app-button text='Delete All' backgroundColor="#408c99" [disabled]="!projectList.length" (click)="onDeleteAll()"></app-button>
-    <app-button text='Save' backgroundColor="#408c99" [disabled]="!projectName || !circles.length" (click)="onSave()"></app-button>
+    <app-button text='Reset' backgroundColor="#f44336" [disabled]="!circles.length || !resetDisable" (click)="onResetColor()"></app-button>
+    <app-button text='Fill All' backgroundColor="#008CBA" [disabled]="!circles.length || fillDisable" (click)="onFillCircles()"></app-button>
+    <app-button text='Delete All' backgroundColor="#f44336" [disabled]="!projectList.length" (click)="onDeleteAll()"></app-button>
+    <app-button text='Save' backgroundColor="#008CBA" [disabled]="!projectName || !circles.length" (click)="onSave()"></app-button>
     <input class="input" type="text" placeholder="ENTER Project Name" [style.pointer-events]='pointer' [(ngModel)]="projectName" />
   </div>
   <div class="circles-container container-{{selectedSize}}">
@@ -33,7 +33,7 @@
          class="project"
          (click)="selectProject(project)">
       <p>Project: {{project.name}}</p>
-      <app-button text='Delete' backgroundColor="#bc3315" (click)="onDelete(i)"></app-button>
+      <app-button text='Delete' backgroundColor="#f44336" (click)="onDelete(i)"></app-button>
     </div>
   </div>
 </div>
