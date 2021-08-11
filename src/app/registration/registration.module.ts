@@ -7,6 +7,7 @@ import { SignInComponent } from './sign-in/sign-in.component';
 import { ValidationComponent } from './validation/validation.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { PaintingModule } from '../painting/painting.module';
+import { ReusableModule } from '../reusable/reusable.module';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { PaintingModule } from '../painting/painting.module';
     RegistrationRoutingModule,
     ReactiveFormsModule,
     PaintingModule,
+    ReusableModule
   ],
   exports: [
     RegisterComponent
