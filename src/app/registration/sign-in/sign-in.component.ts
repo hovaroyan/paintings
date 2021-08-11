@@ -38,7 +38,6 @@ getUserInfo() {
 
 
 handleSignIn() {
-  debugger;
   const signInUser = this.getUserInfo();
 if(!signInUser){
   this.checkInputs = true;
