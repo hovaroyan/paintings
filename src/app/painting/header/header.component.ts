@@ -8,7 +8,7 @@ import { LocalStorageService } from '../../services/storage.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-usersListName = 'users list';
+usersListName = 'usersList';
 email: string = this.userInfo.userEmail;
 name!:string;
   constructor(private storage:LocalStorageService ,private userInfo: UserInfo) { }
@@ -16,6 +16,7 @@ name!:string;
   ngOnInit(): void {
     console.log(this.getUserInfo());
     console.log(this.getUserName());
+    
     
   }
 
