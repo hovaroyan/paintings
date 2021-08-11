@@ -4,8 +4,11 @@
           <app-validation  [control]="$any(items).controls['email']" inputType="email" inputTitle="email"></app-validation >
           <app-validation  [control]="$any(items).controls['password']" inputType="password" inputTitle="password"></app-validation>
        </form>
+       <div class="error-container" *ngIf="checkInputs">
+         email or password do NOT exist
+      </div>
      </div>
-     <app-button routerLink="/painting" padding="10px 30px"  backgroundColor="#4CAF50" text='Sign In' (click)="handleSignIn()"></app-button>
+     <app-button  padding="10px 30px"  backgroundColor="#4CAF50" text='Sign In' (click)="handleSignIn()"></app-button>
      <p>If you are NOT registered please
       <a routerLink="/registration" > <strong> Register Here </strong> </a>
  
