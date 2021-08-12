@@ -26,8 +26,10 @@ export class SignInComponent  {
 
   constructor(private fb: FormBuilder, private storage: LocalStorageService, private router: Router, public userInfo: UserInfo) { }
   ngOnInit(): void {
-
-   }
+    if(this.storage.get('loggedInUser')?.length) {
+      this.router.navigate(['/painting'])
+    }
+  }
    
 getUserInfo() {
   const userStr = this.storage.get(this.usersListName)

@@ -5,6 +5,7 @@ import {LocalStorageService} from "../../services/storage.service";
 import {IProject} from "../interfaces/project.interface";
 import { ProjectsComponent } from '../projects/projects.component';
 import { CirclesComponent } from '../circles/circles.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-canvas',
@@ -31,7 +32,7 @@ export class CanvasComponent implements OnInit {
   fillDisable: boolean = false;
   currentUser!:string;
 
-  constructor(private storage: LocalStorageService) { }
+  constructor(private storage: LocalStorageService, private router: Router) { }
 
   ngOnInit(): void {
     this.getProjects();
@@ -118,12 +119,11 @@ export class CanvasComponent implements OnInit {
     const projects = this.storage.get(this.projectListName);
     if(currentUserStr){
       this.currentUser = currentUserStr
+    } else {
+        this.router.navigate(['/'])    
     }
     if (projects) {
       this.projectList = JSON.parse(projects).filter((project:any)=> project.user === this.currentUser)
-      console.log(this.projectList);
-      console.log(this.currentUser);
-      
       
     }  
  

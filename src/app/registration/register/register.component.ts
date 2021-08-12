@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { IUsers } from 'src/app/painting/interfaces/users.interface';
 import { LocalStorageService } from '../../services/storage.service';
 
@@ -24,13 +25,14 @@ export class RegisterComponent implements OnInit {
   });
   
 
-  constructor(private fb: FormBuilder, private storage: LocalStorageService) { }
+  constructor(private fb: FormBuilder, private storage: LocalStorageService, private router: Router) { }
 
   ngOnInit(): void {
    this.getUsers();
+   if(this.storage.get('loggedInUser')?.length) {
+     this.router.navigate(['/painting'])
+   }
    console.log(this.confirmPasswordCheck());
-   
-   
   }
 
 confirmPasswordCheck() {

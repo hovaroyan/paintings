@@ -16,7 +16,7 @@ export class HeaderComponent implements OnInit {
     
   }
   signOut(){
-     this.storage.set('loggedInUser', JSON.stringify(undefined));
+     this.storage.set('loggedInUser', '');
      this.storage.set('userName', JSON.stringify(undefined));
 
     
