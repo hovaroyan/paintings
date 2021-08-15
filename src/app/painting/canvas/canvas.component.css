@@ -55,6 +55,7 @@
   margin: 0 5px 10px 0;
   font-weight: bold;
   align-content: center;
+  cursor: pointer;
   background: linear-gradient(to left, #BBD2C5, #536976,#292E49);
 }
 
