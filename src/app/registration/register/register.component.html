@@ -5,6 +5,7 @@
           <app-validation [control]="$any(items).controls['lastName']" inputType="text" inputTitle="last name"></app-validation >
           <app-validation  [control]="$any(items).controls['phoneNumber']" inputType="text" inputTitle="phone number"></app-validation >
           <app-validation  [control]="$any(items).controls['email']" inputType="email" inputTitle="email"></app-validation>
+          <div class="error-container" *ngIf="emailCheck">email exists</div>
           <app-validation  [control]="$any(items).controls['password']" inputType="password" inputTitle="password"></app-validation >
           <app-validation  [control]="$any(items).controls['confirmPassword']" inputType="password" inputTitle="confirm password"></app-validation >
           <div class="error-container" *ngIf="$any(items).controls['confirmPassword'].value && !confirmPasswordCheck() ">
@@ -12,7 +13,7 @@
           </div>
        </form>
      </div>
-     <app-button routerLink="" padding="10px 30px" backgroundColor="#008CBA" [disabled]="!(items.valid && confirmPasswordCheck()) " text='Submit' (click)="handleSignUp()"></app-button>
+     <app-button [routerLink]="routePath" padding="10px 30px" backgroundColor="#008CBA" [disabled]="!(items.valid && confirmPasswordCheck()) " text='Submit' (click)="handleSignUp()"></app-button>
      <p>If you are a registered user please
       <a routerLink="/" > <strong> Sign In </strong> </a>
  </div>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { IUsers } from 'src/app/painting/interfaces/users.interface';
 import { LocalStorageService } from '../../services/storage.service';
@@ -12,7 +12,9 @@ import { LocalStorageService } from '../../services/storage.service';
 export class RegisterComponent implements OnInit {
 
   usersList: IUsers[] = [];
-  usersListName = 'usersList'
+  usersListName = 'usersList';
+  emailCheck:boolean = false;
+  routePath!: string;
 
   items= this.fb.group({
     name: this.fb.control('',[Validators.required, Validators.minLength(5)]),
@@ -32,7 +34,7 @@ export class RegisterComponent implements OnInit {
    if(this.storage.get('loggedInUser')?.length) {
      this.router.navigate(['/painting'])
    }
-   console.log(this.confirmPasswordCheck());
+
   }
 
 confirmPasswordCheck() {
@@ -46,6 +48,17 @@ confirmPasswordCheck() {
   }
 
 }
+
+existingEmailCheck() {
+    this.usersList.forEach(user=>{
+      if(user.email === this.items.controls.email.value ){
+        this.emailCheck = true;
+      } else {
+        this.emailCheck = false
+      }
+    }); 
+}
+
 getUsers(): void {
   const users = this.storage.get(this.usersListName);
   if (users) {
@@ -54,13 +67,19 @@ getUsers(): void {
 }
 
 handleSignUp() {
-console.log(this.usersList);
+this.existingEmailCheck()
 
-if(this.items.valid) {
+if(this.items.valid && !this.emailCheck) {
   this.usersList.push(this.items.value);
   const usersListStr = JSON.stringify(this.usersList)
-  this.storage.set(this.usersListName, usersListStr)
-} 
+  this.storage.set(this.usersListName, usersListStr);
+  this.routePath = "";
+} else {
+  this.routePath = "/registration";
 }
+
+}
+
+
 
 }
