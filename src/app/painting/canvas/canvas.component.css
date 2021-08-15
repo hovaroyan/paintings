@@ -122,6 +122,10 @@
  outline: none;
 }
 
+.cursor {
+  cursor: not-allowed;
+}
+
 @media (max-width: 870px) {
   .canvas-component {
     margin:0;

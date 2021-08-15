@@ -30,7 +30,9 @@ export class CanvasComponent implements OnInit {
   canvasPattern: number = this.canvasSizes[0]; 
   resetDisable: boolean = false;
   fillDisable: boolean = false;
+  editDisable: boolean = false;
   currentUser!:string;
+  showButton: string = 'none';
 
   constructor(private storage: LocalStorageService, private router: Router) { }
 
@@ -113,6 +115,11 @@ export class CanvasComponent implements OnInit {
     this.projectName='';
     this.circles = [];
   }
+
+  onEdit() {
+    this.pointer='all';
+    this.editDisable= true;
+  }
  
   getProjects(): void {
     const currentUserStr = this.storage.get('loggedInUser');
@@ -144,7 +151,9 @@ export class CanvasComponent implements OnInit {
     this.circles = project.circles;
     this.projectName = project.name;
     this.pointer = 'none'; 
-    this.id = project.id; 
+    this.id = project.id;
+    this.showButton = 'block'; 
+    this.editDisable= false;
   }
 
   onDelete(i: number): void {

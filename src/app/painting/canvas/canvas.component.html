@@ -21,8 +21,11 @@
       <app-button text='Reset' backgroundColor="#c62d1f" [disabled]="!circles.length || !resetDisable" (click)="onResetColor()"></app-button>
       <app-button text='Fill All' backgroundColor="#008CBA" [disabled]="!circles.length || fillDisable" (click)="onFillCircles()"></app-button>
       <app-button text='Delete All' backgroundColor="#c62d1f" [disabled]="!projectList.length" (click)="onDeleteAll()"></app-button>
-      <app-button text='Save' backgroundColor="#008CBA" [disabled]="!projectName || !circles.length" (click)="onSave()"></app-button>
-      <input class="input" type="text" placeholder="ENTER Project Name" [style.pointer-events]='pointer' [(ngModel)]="projectName" />
+      <app-button text='Save' backgroundColor="#4CAF50" [disabled]="!projectName || !circles.length" (click)="onSave()"></app-button>
+      <app-button text='Edit Name' backgroundColor="#008CBA" [disabled]="editDisable" [style.display]="showButton" (click)="onEdit()"></app-button>
+      <span class="cursor">
+      <input class="input" type="text" placeholder="ENTER Project Name" [style.pointer-events]="pointer"  [(ngModel)]="projectName"/>
+      </span>
     </div>
     <div class="circles-container container-{{selectedSize}}">
       <app-circle *ngFor="let circle of circles"
