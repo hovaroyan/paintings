@@ -123,7 +123,7 @@ export class CanvasComponent implements OnInit {
         this.router.navigate(['/'])    
     }
     if (projects) {
-      this.projectList = JSON.parse(projects).filter((project:any)=> project.user === this.currentUser)
+      this.projectList = JSON.parse(projects)
       
     }  
  

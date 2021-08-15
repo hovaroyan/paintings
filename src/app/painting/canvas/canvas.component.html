@@ -30,12 +30,12 @@
                   (click)="onCircleClick(circle)">
       </app-circle>
     </div>
-    <div class="projects-container">
-      <div *ngFor="let project of projectList; let i = index"
-           class="project"
-           (click)="selectProject(project)">
+    <div class="projects-container" *ngIf="projectList.length">
+      <div *ngFor="let project of projectList; let i = index">
+           <div class="project" *ngIf="currentUser === project.user" (click)="selectProject(project)">
         <p>Project: {{project.name}}</p>
         <app-button text='Delete' backgroundColor="#c62d1f" (click)="onDelete(i)"></app-button>
+      </div>
       </div>
     </div>
   </div>
