@@ -34,7 +34,7 @@ export class RegisterComponent implements OnInit {
    if(this.storage.get('loggedInUser')?.length) {
      this.router.navigate(['/painting'])
    }
-
+this.existingEmailCheck()
   }
 
 confirmPasswordCheck() {
@@ -53,8 +53,6 @@ existingEmailCheck() {
     this.usersList.forEach(user=>{
       if(user.email === this.items.controls.email.value ){
         this.emailCheck = true;
-      } else {
-        this.emailCheck = false
       }
     }); 
 }
@@ -79,7 +77,5 @@ if(this.items.valid && !this.emailCheck) {
 }
 
 }
-
-
 
 }
