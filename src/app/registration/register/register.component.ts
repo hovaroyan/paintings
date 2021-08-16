@@ -14,6 +14,7 @@ export class RegisterComponent implements OnInit {
   usersList: IUsers[] = [];
   usersListName = 'usersList';
   emailCheck:boolean = false;
+  showEmailError: boolean = false;
   routePath!: string;
 
   items= this.fb.group({
@@ -53,7 +54,8 @@ existingEmailCheck() {
     this.usersList.forEach(user=>{
       if(user.email === this.items.controls.email.value ){
         this.emailCheck = true;
-      }
+        this.showEmailError=true;
+      } 
     }); 
 }
 
@@ -69,12 +71,14 @@ this.existingEmailCheck()
 
 if(this.items.valid && !this.emailCheck) {
   this.usersList.push(this.items.value);
-  const usersListStr = JSON.stringify(this.usersList)
+  const usersListStr = JSON.stringify(this.usersList);
   this.storage.set(this.usersListName, usersListStr);
-  this.routePath = "";
-} else {
-  this.routePath = "/registration";
-}
+  this.router.navigate(["/"]);
+} 
+setTimeout(() => {
+  this.showEmailError=false;
+  this.emailCheck = false;
+}, 1000);
 
 }
 
